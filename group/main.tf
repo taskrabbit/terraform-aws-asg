@@ -75,6 +75,7 @@ module "lc" {
   instance_type               = var.instance_type
   key_name                    = var.key_name
   placement_tenancy           = var.placement_tenancy
+  root_vol_encrypted          = var.root_vol_encrypted
   root_vol_del_on_term        = var.root_vol_del_on_term
   root_vol_iops               = var.root_vol_iops
   root_vol_size               = var.root_vol_size
@@ -123,4 +124,3 @@ module "asg" {
   target_group_arns     = var.target_group_arns
   wait_for_elb_capacity = var.wait_for_elb_capacity
 }
-

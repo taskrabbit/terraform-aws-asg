@@ -80,6 +80,11 @@ variable "key_name" {
   default = ""
 }
 
+variable "root_vol_encrypted" {
+  type    = bool
+  default = true
+}
+
 variable "root_vol_size" {
   type    = string
   default = ""
@@ -114,4 +119,3 @@ variable "internal" {
   type    = string
   default = "true"
 }
-

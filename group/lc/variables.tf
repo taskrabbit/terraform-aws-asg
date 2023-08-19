@@ -81,6 +81,10 @@ variable "placement_tenancy" {
   type = string
 }
 
+variable "root_vol_encrypted" {
+  type = bool
+}
+
 variable "root_vol_del_on_term" {
   type = string
 }
@@ -108,4 +112,3 @@ variable "spot_price" {
 variable "user_data" {
   type = string
 }
-
