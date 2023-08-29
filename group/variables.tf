@@ -154,6 +154,12 @@ variable "placement_tenancy" {
   default     = "default"
 }
 
+variable "root_vol_encrypted" {
+  type        = bool
+  description = "Whether the root volume should be encrypted or not."
+  default     = false
+}
+
 variable "root_vol_del_on_term" {
   type        = string
   description = "Whether the volume should be destroyed on instance termination."
@@ -307,4 +313,3 @@ variable "wait_for_elb_capacity" {
   description = "Setting this will cause Terraform to wait for exactly this number of healthy instances in all attached load balancers on both create and update operations. (Takes precedence over 'min_elb_capacity' behavior.)"
   default     = ""
 }
-

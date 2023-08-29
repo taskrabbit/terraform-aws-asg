@@ -42,6 +42,7 @@ resource "aws_launch_configuration" "lc" {
   user_data  = var.user_data
 
   root_block_device {
+    encrypted             = var.root_vol_encrypted
     delete_on_termination = var.root_vol_del_on_term
     iops                  = var.root_vol_type == "io1" ? var.root_vol_iops : "0"
     volume_size           = length(var.root_vol_size) > 0 ? var.root_vol_size : "8"
@@ -72,6 +73,7 @@ resource "aws_launch_configuration" "lc_ebs" {
   user_data  = var.user_data
 
   root_block_device {
+    encrypted             = var.root_vol_encrypted
     delete_on_termination = var.root_vol_del_on_term
     iops                  = var.root_vol_type == "io1" ? var.root_vol_iops : "0"
     volume_size           = length(var.root_vol_size) > 0 ? var.root_vol_size : "0"
@@ -92,4 +94,3 @@ resource "aws_launch_configuration" "lc_ebs" {
     create_before_destroy = true
   }
 }
-
