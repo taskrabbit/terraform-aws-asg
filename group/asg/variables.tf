@@ -29,8 +29,8 @@ variable "subnets" {
   type = list(string)
 }
 
-## LC parameters
-variable "lc_id" {
+## LT parameters
+variable "lt_id" {
   type = string
 }
 

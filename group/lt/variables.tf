@@ -10,7 +10,7 @@ variable "stack_item_label" {
 }
 
 ## Allow override of resource naming
-variable "lc_sg_name_prefix_override" {
+variable "lt_sg_name_prefix_override" {
   type = string
 }
 
@@ -19,14 +19,16 @@ variable "vpc_id" {
   type = string
 }
 
-## LC parameters
-variable "associate_public_ip_address" {
-  type = string
-  default = "false"
-}
-
+## LT parameters
 variable "ami" {
   type = string
+}
+
+variable "associate_public_ip_address" {
+  default = "false"
+  #default = null
+  type    = string
+  #type   = bool
 }
 
 variable "ebs_optimized" {
@@ -45,15 +47,15 @@ variable "ebs_vol_encrypted" {
   type = string
 }
 
-variable "ebs_vol_snapshot_id" {
-  type = string
-}
-
 variable "ebs_vol_iops" {
   type = string
 }
 
 variable "ebs_vol_size" {
+  type = string
+}
+
+variable "ebs_vol_snapshot_id" {
   type = string
 }
 
@@ -63,6 +65,12 @@ variable "ebs_vol_type" {
 
 variable "enable_monitoring" {
   type = string
+}
+
+variable "instance_market_options" {
+  default     = {}
+  description = "The market (purchasing) option for the instance"
+  type        = any
 }
 
 variable "instance_profile" {
@@ -77,8 +85,10 @@ variable "key_name" {
   type = string
 }
 
-variable "placement_tenancy" {
-  type = string
+variable "placement" {
+  default     = {}
+  description = "The placement of the instance"
+  type        = map(string)
 }
 
 variable "root_vol_encrypted" {
@@ -103,10 +113,6 @@ variable "root_vol_type" {
 
 variable "security_groups" {
   type = list(string)
-}
-
-variable "spot_price" {
-  type = string
 }
 
 variable "user_data" {

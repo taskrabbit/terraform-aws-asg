@@ -4,11 +4,11 @@
 environments:
   basic:
     - defaults
-    - lc-options
+    - lt-options
     - asg-options
 
   complete:
-    - lc-ebs-new
-    - lc-ebs-snap
+    - lt-ebs-new
+    - lt-ebs-snap
     - asg-elb
     - asg-elb-wait

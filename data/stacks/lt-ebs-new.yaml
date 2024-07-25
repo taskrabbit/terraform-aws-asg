@@ -1,11 +1,11 @@
 ---
-# Advanced LC new EBS example
+# Advanced LT new EBS example
 
 ## Module
-lc-ebs-new::module: 'examples/complete'
+lt-ebs-new::module: 'examples/complete'
 
 ## State storage
-lc-ebs-new::state:
+lt-ebs-new::state:
   - s3:
       bucket: "%{alias('tf_state_bucket')}"
       name: "terraform-aws-asg/%{environment}"
@@ -13,7 +13,7 @@ lc-ebs-new::state:
 
 ## Input variables
 examples::complete::vars:
-  # LC parameters
+  # LT parameters
   ebs_vol_device_name: '/dev/xvdb'
   ebs_vol_encrypted: 'true'
   ebs_vol_size: '1'

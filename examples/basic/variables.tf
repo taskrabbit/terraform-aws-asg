@@ -22,7 +22,7 @@ variable "vpc_id" {
   type = string
 }
 
-## LC parameters
+## LT parameters
 variable "ami" {
   type = string
 }

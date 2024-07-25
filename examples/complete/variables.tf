@@ -32,7 +32,7 @@ variable "subnets" {
   type = string
 }
 
-## LC parameters
+## LT parameters
 variable "ami" {
   type = string
 }

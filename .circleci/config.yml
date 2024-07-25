@@ -31,20 +31,20 @@ jobs:
           name: Basic
           command: |
             bundle exec rake basic:defaults:apply
-            ## TODO: Currently need to run this twice to account for a race condition in LC updates
-            bundle exec rake basic:lc-options:apply || true
-            bundle exec rake basic:lc-options:apply
+            ## TODO: Currently need to run this twice to account for a race condition in LT updates
+            bundle exec rake basic:lt-options:apply || true
+            bundle exec rake basic:lt-options:apply
             bundle exec rake basic:asg-options:apply
             bundle exec rake basic:asg-options:destroy
 
       - run:
           name: Complete
           command: |
-            bundle exec rake complete:lc-ebs-new:apply
-            ## TODO: Currently need to run this twice to account for a race condition in LC updates
-            bundle exec rake complete:lc-ebs-snap:apply || true
-            bundle exec rake complete:lc-ebs-snap:apply
-            bundle exec rake complete:lc-ebs-snap:destroy
+            bundle exec rake complete:lt-ebs-new:apply
+            ## TODO: Currently need to run this twice to account for a race condition in LT updates
+            bundle exec rake complete:lt-ebs-snap:apply || true
+            bundle exec rake complete:lt-ebs-snap:apply
+            bundle exec rake complete:lt-ebs-snap:destroy
             bundle exec rake complete:asg-elb:apply
             bundle exec rake complete:asg-elb-wait:apply
             bundle exec rake complete:asg-elb-wait:destroy

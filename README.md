@@ -15,7 +15,7 @@ to an AWS VPC.
 
 ## Group Module
 
-The group module will provision security group, launch configuration and auto
+The group module will provision security group, launch template and auto
 scaling group resources. Both ELB and simple group configurations are
 supported.
 
@@ -34,8 +34,8 @@ and also serves as a unique key for re-use.
 * `subnets` - List of VPC subnets to associate with the auto scaling group.
 * `vpc_id` - ID of the target VPC.
 
-**Launch configuration parameters**
-* `ami` - Amazon Machine Image (AMI) to associate with the launch configuration.
+**Launch template parameters**
+* `ami` - Amazon Machine Image (AMI) to associate with the launch template.
 * `associate_public_ip_address` - (Optional) Flag for associating public IP
 addresses with instances managed by the auto scaling group.
 * `ebs_optimized` - (Default: **false**) Flag to enable Elastic Block Storage
@@ -48,21 +48,21 @@ the **ec2:CreateTags** action granted for the given instance.
 * `instance_name_prefix` - (Optional) String to replace **stack_item_label**
 when `instance_based_naming_enabled` is set to **true**.
 * `instance_profile` - (Optional) IAM instance profile to associate with the
-launch configuration.
+launch template.
 * `instance_tags` - (Optional) A map of key/value pairs to be applied as tags
 to each instance. Requires the instance to have the AWS CLI installed and an
 instance profile applied with the **ec2:CreateTags** action granted for the
 given instance.
 * `instance_type` - EC2 instance type to associate with the launch
-configuration.
+template.
 * `key_name` - (Optional) SSH key pair to associate with the launch
-configuration.
+template.
 * `placement_tenancy` - (Default: **default**) The tenancy of the instance.
 Valid values are **default** or **dedicated**.
 * `security_groups` - (Optional) A list of associated security group IDs.
 * `spot_price` - (Optional) The price to use for reserving spot instances.
 * `user_data` - (Optional) Instance initialization data to associate with the
-launch configuration.
+launch template.
 
 **Block volume configuration**
 
@@ -128,7 +128,7 @@ auto scaling group. The allowed values are 'Launch', 'Terminate', 'HealthCheck',
 functioning properly.
 * `termination_policies` - (Optional) A list of policies to decide how the
 instances in the auto scale group should be terminated. The allowed values are
-'OldestInstance', 'NewestInstance', 'OldestLaunchConfiguration',
+'OldestInstance', 'NewestInstance', 'OldestLaunchTemplate',
 'ClosestToNextInstanceHour', 'Default'.
 * `wait_for_capacity_timeout` - (Default: **10m**) A maximum duration that
 Terraform should wait for ASG managed instances to become healthy before
@@ -168,7 +168,7 @@ module "asg" {
   subnets = "subnet-3315e85a,subnet-3bbaaf43,subnet-ec1326a6"
   vpc_id  = "vpc-0f986c66"
 
-  # LC parameters
+  # LT parameters
   ami                           = "ami-0b33d91d"
   enable_monitoring             = true
   instance_based_naming_enabled = true
@@ -209,7 +209,7 @@ module "asg" {
   subnets = "subnet-3315e85a,subnet-3bbaaf43,subnet-ec1326a6"
   vpc_id  = "vpc-0f986c66"
 
-  # LC parameters
+  # LT parameters
   ami                           = "ami-0b33d91d"
   ebs_vol_device_name           = "/dev/xvdb"
   ebs_vol_encrypted             = true
@@ -237,7 +237,7 @@ module "asg" {
 
 * `asg_id` - ID of the auto scaling group
 * `asg_name` - Name of the auto scaling group
-* `lc_id` - ID of the launch configuration
+* `lt_id` - ID of the launch template
 * `sg_id` - ID of the security group
 
 ## Policy Module

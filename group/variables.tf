@@ -17,7 +17,7 @@ variable "asg_name_override" {
   default     = ""
 }
 
-variable "lc_sg_name_prefix_override" {
+variable "lt_sg_name_prefix_override" {
   type        = string
   description = "A string to override the ASG name"
   default     = ""
@@ -40,10 +40,10 @@ variable "vpc_id" {
   description = "ID of the target VPC."
 }
 
-## LC parameters
+## LT parameters
 variable "ami" {
   type        = string
-  description = "Amazon Machine Image (AMI) to associate with the launch configuration."
+  description = "Amazon Machine Image (AMI) to associate with the launch template."
 }
 
 variable "associate_public_ip_address" {
@@ -124,7 +124,7 @@ variable "instance_name_prefix" {
 
 variable "instance_profile" {
   type        = string
-  description = "IAM instance profile to associate with the launch configuration."
+  description = "IAM instance profile to associate with the launch template."
   default     = ""
 }
 
@@ -139,12 +139,12 @@ variable "instance_tags" {
 
 variable "instance_type" {
   type        = string
-  description = "EC2 instance type to associate with the launch configuration."
+  description = "EC2 instance type to associate with the launch template."
 }
 
 variable "key_name" {
   type        = string
-  description = "SSH key pair to associate with the launch configuration."
+  description = "SSH key pair to associate with the launch template."
   default     = ""
 }
 
@@ -202,7 +202,7 @@ variable "spot_price" {
 
 variable "user_data" {
   type        = string
-  description = "Instance initialization data to associate with the launch configuration."
+  description = "Instance initialization data to associate with the launch template."
   default     = ""
 }
 
@@ -279,7 +279,7 @@ variable "suspended_processes" {
 
 variable "termination_policies" {
   type        = list(string)
-  description = "A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are 'OldestInstance', 'NewestInstance', 'OldestLaunchConfiguration', 'ClosestToNextInstanceHour', 'Default'."
+  description = "A list of policies to decide how the instances in the auto scale group should be terminated. The allowed values are 'OldestInstance', 'NewestInstance', 'OldestLaunchTemplate', 'ClosestToNextInstanceHour', 'Default'."
   default     = []
 }
 

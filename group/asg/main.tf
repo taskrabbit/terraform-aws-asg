@@ -32,7 +32,7 @@ resource "aws_autoscaling_group" "asg" {
   force_delete              = local.force_delete
   health_check_grace_period = length(var.hc_grace_period) > 0 ? var.hc_grace_period : "300"
   health_check_type         = "EC2"
-  launch_configuration      = var.lc_id
+  launch_template           = var.lt_id
   max_size                  = var.max_size
   metrics_granularity       = var.metrics_granularity
   min_size                  = var.min_size
@@ -57,7 +57,7 @@ resource "aws_autoscaling_group" "asg_elb" {
   force_delete              = local.force_delete
   health_check_grace_period = length(var.hc_grace_period) > 0 ? var.hc_grace_period : "300"
   health_check_type         = length(var.hc_check_type) > 0 ? var.hc_check_type : "ELB"
-  launch_configuration      = var.lc_id
+  launch_template           = var.lt_id
   load_balancers            = compact(var.load_balancers)
   max_size                  = var.max_size
   metrics_granularity       = var.metrics_granularity

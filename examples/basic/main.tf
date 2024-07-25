@@ -46,7 +46,7 @@ module "example" {
   subnets = split(",", var.subnets)
   vpc_id  = var.vpc_id
 
-  # LC parameters
+  # LT parameters
   ami                         = var.ami
   associate_public_ip_address = var.associate_public_ip_address
   enable_monitoring           = var.enable_monitoring
