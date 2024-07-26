@@ -1,8 +1,8 @@
 # AWS Auto Scaling Configuration
 
 locals {
-  instance_market_options = var.spot_price == "" ? null : {max_price = var.spot_price}
-  placement = var.placement_tenancy == "" ? null : {tenancy = var.placement_tenancy}
+  instance_market_options = var.spot_price == "" ? null : { max_price = var.spot_price }
+  placement               = var.placement_tenancy == "" ? null : { tenancy = var.placement_tenancy }
 }
 
 ## Creates cloudconfig fragments for tagging

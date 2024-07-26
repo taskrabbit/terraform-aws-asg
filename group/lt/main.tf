@@ -1,8 +1,8 @@
 # AWS Launch Template
 locals {
   associate_public_ip_address = var.associate_public_ip_address == "" ? null : tobool(var.associate_public_ip_address)
-  enable_monitoring = var.enable_monitoring == "" ? null : tobool(var.enable_monitoring)
-  ebs_vol_encrypted = var.ebs_vol_encrypted == "" ? null : tobool(var.ebs_vol_encrypted)
+  enable_monitoring           = var.enable_monitoring == "" ? null : tobool(var.enable_monitoring)
+  ebs_vol_encrypted           = var.ebs_vol_encrypted == "" ? null : tobool(var.ebs_vol_encrypted)
 }
 
 ## Creates security group

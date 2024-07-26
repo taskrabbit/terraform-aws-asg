@@ -19,8 +19,8 @@ locals {
       propagate_at_launch = true
     },
   ]
-  force_delete                     = var.force_delete == "" ? null : tobool(var.force_delete)
-  protect_from_scale_in               = var.protect_from_scale_in == "" ? null : tobool(var.protect_from_scale_in)
+  force_delete          = var.force_delete == "" ? null : tobool(var.force_delete)
+  protect_from_scale_in = var.protect_from_scale_in == "" ? null : tobool(var.protect_from_scale_in)
 }
 
 resource "aws_autoscaling_group" "asg" {

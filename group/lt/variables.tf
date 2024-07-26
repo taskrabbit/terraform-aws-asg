@@ -27,7 +27,7 @@ variable "ami" {
 variable "associate_public_ip_address" {
   default = "false"
   #default = null
-  type    = string
+  type = string
   #type   = bool
 }
 
