@@ -1,1 +1,1 @@
-  - "`which aws` ec2 create-tags --region ${region} --resources `curl -s http://169.254.169.254/latest/meta-data/instance-id` --tags Key=${key},Value=${value}"
+  - "TOKEN=`curl -s -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 600'` && `which aws` ec2 create-tags --region ${region} --resources `curl -s -H 'X-aws-ec2-metadata-token: $TOKEN' http://169.254.169.254/latest/meta-data/instance-id` --tags Key=${key},Value=${value}"
