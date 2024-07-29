@@ -48,7 +48,14 @@ resource "aws_autoscaling_group" "asg" {
   vpc_zone_identifier       = compact(var.subnets)
   wait_for_capacity_timeout = length(var.wait_for_capacity_timeout) > 0 ? var.wait_for_capacity_timeout : "10m"
 
-  tags = concat(local.default_asg_tags, var.additional_asg_tags)
+  dynamic "tag" {
+    for_each = concat(local.default_asg_tags, var.additional_asg_tags)
+    content {
+      key                 = try(tag.value.key, null)
+      propagate_at_launch = try(tag.value.propagate_at_launch, null)
+      value               = try(tag.value.value, null)
+    }
+  }
 }
 
 resource "aws_autoscaling_group" "asg_elb" {
@@ -79,6 +86,12 @@ resource "aws_autoscaling_group" "asg_elb" {
   wait_for_capacity_timeout = length(var.wait_for_capacity_timeout) > 0 ? var.wait_for_capacity_timeout : "10m"
   wait_for_elb_capacity     = length(var.wait_for_elb_capacity) > 0 ? var.wait_for_elb_capacity : "0"
 
-  tags = concat(local.default_asg_tags, var.additional_asg_tags)
+  dynamic "tag" {
+    for_each = concat(local.default_asg_tags, var.additional_asg_tags)
+    content {
+      key                 = try(tag.value.key, null)
+      propagate_at_launch = try(tag.value.propagate_at_launch, null)
+      value               = try(tag.value.value, null)
+    }
+  }
 }
-
