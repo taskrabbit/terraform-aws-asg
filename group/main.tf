@@ -1,5 +1,10 @@
 # AWS Auto Scaling Configuration
 
+locals {
+  instance_market_options = var.spot_price == "" ? { market_type = null, spot_options = { max_price = null }} : { market_type = "spot", spot_options = { max_price = var.spot_price }}
+  placement               = var.placement_tenancy == "" ? { tenancy = null } : { tenancy = var.placement_tenancy }
+}
+
 ## Creates cloudconfig fragments for tagging
 data "aws_region" "current" {
 }
@@ -27,7 +32,7 @@ data "template_file" "tags" {
 
 data "template_cloudinit_config" "cloud_config" {
   gzip          = false
-  base64_encode = false
+  base64_encode = true
 
   part {
     content_type = "text/cloud-config"
@@ -47,19 +52,19 @@ data "template_cloudinit_config" "cloud_config" {
   }
 }
 
-## Creates launch configuration & security group
-module "lc" {
-  source = "./lc"
+## Creates launch template & security group
+module "lt" {
+  source = "./lt"
 
   ### Resource labels
   stack_item_fullname        = var.stack_item_fullname
   stack_item_label           = var.stack_item_label
-  lc_sg_name_prefix_override = var.lc_sg_name_prefix_override
+  lt_sg_name_prefix_override = var.lt_sg_name_prefix_override
 
   ### VPC parameters
   vpc_id = var.vpc_id
 
-  ### LC parameters
+  ### LT parameters
   ami                         = var.ami
   associate_public_ip_address = var.associate_public_ip_address
   ebs_optimized               = var.ebs_optimized
@@ -71,17 +76,17 @@ module "lc" {
   ebs_vol_snapshot_id         = var.ebs_vol_snapshot_id
   ebs_vol_type                = var.ebs_vol_type
   enable_monitoring           = var.enable_monitoring
+  instance_market_options     = local.instance_market_options
   instance_profile            = var.instance_profile
   instance_type               = var.instance_type
   key_name                    = var.key_name
-  placement_tenancy           = var.placement_tenancy
+  placement                   = local.placement
   root_vol_encrypted          = var.root_vol_encrypted
   root_vol_del_on_term        = var.root_vol_del_on_term
   root_vol_iops               = var.root_vol_iops
   root_vol_size               = var.root_vol_size
   root_vol_type               = var.root_vol_type
   security_groups             = var.security_groups
-  spot_price                  = var.spot_price
   user_data                   = data.template_cloudinit_config.cloud_config.rendered
 }
 
@@ -98,8 +103,8 @@ module "asg" {
   ### VPC parameters
   subnets = var.subnets
 
-  ### LC parameters
-  lc_id = module.lc.lc_id
+  ### LT parameters
+  lt_id = module.lt.lt_id
 
   ### ASG parameters
   default_cooldown          = var.default_cooldown

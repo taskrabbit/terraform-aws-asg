@@ -10,7 +10,20 @@
 to a single SNS topic.
 * Extend multi-part user_data mechanism to support more use cases.
 
-## 0.4.0 (Oct 08, 2019)
+## 0.5.0 (July 29, 2024)
+
+#### IMPROVEMENTS / NEW FEATURES:
+* Launch template
+
+#### BACKWARDS INCOMPATIBILITIES / NOTES:
+* Launch configuration no longer supported
+
+## 0.4.1 (August 29, 2019)
+
+#### IMPROVEMENTS / NEW FEATURES:
+* Add encryption to root block device
+
+## 0.4.0 (October 08, 2019)
 
 #### IMPROVEMENTS / NEW FEATURES:
 * Updated for Terraform v0.12

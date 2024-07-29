@@ -8,11 +8,11 @@ output "asg_name" {
   value = module.asg.asg_name
 }
 
-output "lc_id" {
-  value = module.lc.lc_id
+output "lt_id" {
+  value = module.lt.lt_id
 }
 
 output "sg_id" {
-  value = module.lc.sg_id
+  value = module.lt.sg_id
 }
 

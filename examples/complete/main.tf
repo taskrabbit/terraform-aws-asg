@@ -168,7 +168,7 @@ module "example" {
   subnets = split(",", var.subnets)
   vpc_id  = var.vpc_id
 
-  # LC parameters
+  # LT parameters
   ami                           = var.ami
   ebs_vol_device_name           = var.ebs_vol_device_name
   ebs_vol_encrypted             = var.ebs_vol_encrypted
