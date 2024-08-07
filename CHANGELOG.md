@@ -10,6 +10,9 @@
 to a single SNS topic.
 * Extend multi-part user_data mechanism to support more use cases.
 
+## 0.5.2 (August 7, 2024)
+* Ignore changes to instance market options
+
 ## 0.5.0 (July 29, 2024)
 
 #### IMPROVEMENTS / NEW FEATURES:
