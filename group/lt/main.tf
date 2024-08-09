@@ -70,7 +70,8 @@ resource "aws_launch_template" "lt" {
   lifecycle {
     create_before_destroy = true
     ignore_changes = [
-      instance_market_options
+      instance_market_options,
+      placement
     ]
   }
 
