@@ -1,6 +1,11 @@
 # Input Variables
 
 ## Resource tags
+variable "enable_imdsv2" {
+  type    = bool
+  default = false #Remove when rolling out IMDSv2 to Prod
+}
+
 variable "stack_item_fullname" {
   type = string
 }
