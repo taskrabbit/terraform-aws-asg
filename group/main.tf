@@ -1,7 +1,7 @@
 # AWS Auto Scaling Configuration
 
 locals {
-  instance_market_options = var.spot_price == "" ? { market_type = null, spot_options = { max_price = null }} : { market_type = "spot", spot_options = { max_price = var.spot_price }}
+  instance_market_options = var.spot_price == "" ? { market_type = null, spot_options = { max_price = null } } : { market_type = "spot", spot_options = { max_price = var.spot_price } }
   placement               = var.placement_tenancy == "" ? { tenancy = null } : { tenancy = var.placement_tenancy }
 }
 
@@ -75,6 +75,7 @@ module "lt" {
   ebs_vol_size                = var.ebs_vol_size
   ebs_vol_snapshot_id         = var.ebs_vol_snapshot_id
   ebs_vol_type                = var.ebs_vol_type
+  enable_imdsv2               = var.enable_imdsv2
   enable_monitoring           = var.enable_monitoring
   instance_market_options     = local.instance_market_options
   instance_profile            = var.instance_profile
