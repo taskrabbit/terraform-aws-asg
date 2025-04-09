@@ -1,5 +1,3 @@
-  - "`which aws` ec2 create-tags --region ${region} --resources `curl -s http://169.254.169.254/latest/meta-data/instance-id` --tags Key=${key},Value=${value}"
-
 #cloud-config
 runcmd:
   # Fetch IMDSv2 token
