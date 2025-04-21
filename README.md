@@ -40,7 +40,6 @@ and also serves as a unique key for re-use.
 addresses with instances managed by the auto scaling group.
 * `ebs_optimized` - (Default: **false**) Flag to enable Elastic Block Storage
 (EBS) optimization.
-* `enable_imdsv2` - (Default: false) Flag to enforce Instance Metadata Service IMDSv2.
 * `enable_monitoring` - (Optional) Flag to enable detailed monitoring.
 * `instance_based_naming_enabled` - (Optional) Flag to enable dynamic name tags
 on instances. The default format is **stack_item_label-instance-id**. Requires

@@ -64,16 +64,10 @@ resource "aws_launch_template" "lt" {
     }
   }
 
-  # Replace with a simple "metadata_options" block when rolling out to Prod.
-  # This ensures we don't introduce drift to Prod in the meantime.
-  dynamic "metadata_options" {
-    for_each = var.enable_imdsv2 ? [1] : []
-
-    content {
-      http_endpoint               = "enabled"
-      http_tokens                 = "required"
-      http_put_response_hop_limit = 2
-    }
+  metadata_options {
+    http_endpoint               = "enabled"
+    http_tokens                 = "required"
+    http_put_response_hop_limit = 1
   }
 
   instance_type = var.instance_type

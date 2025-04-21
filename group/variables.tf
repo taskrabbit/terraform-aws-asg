@@ -1,12 +1,6 @@
 # Input Variables
 
 ## Resource tags
-#Remove this var when rolling out IMDSv2 to Prod
-variable "enable_imdsv2" {
-  type    = bool
-  default = false
-}
-
 variable "stack_item_fullname" {
   type        = string
   description = "Long form descriptive name for this stack item. This value is used to create the 'application' resource tag for resources created by this stack item."
