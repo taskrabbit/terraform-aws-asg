@@ -208,7 +208,7 @@ variable "user_data" {
 
 ## ASG parameters
 variable "additional_asg_tags" {
-  type        = list(map)
+  type        = list(any)
   description = "Additional tags to apply at the ASG level, if any"
   default     = []
 }

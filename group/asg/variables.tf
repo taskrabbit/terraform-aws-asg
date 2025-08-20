@@ -10,7 +10,7 @@ variable "stack_item_label" {
 }
 
 variable "additional_asg_tags" {
-  type    = list(string)
+  type    = list(any)
   default = []
 }
 
