@@ -208,9 +208,9 @@ variable "user_data" {
 
 ## ASG parameters
 variable "additional_asg_tags" {
-  type        = map(string)
+  type        = list(any)
   description = "Additional tags to apply at the ASG level, if any"
-  default     = {}
+  default     = []
 }
 
 variable "default_cooldown" {
