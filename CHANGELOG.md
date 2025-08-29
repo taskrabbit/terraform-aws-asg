@@ -10,8 +10,20 @@
 to a single SNS topic.
 * Extend multi-part user_data mechanism to support more use cases.
 
+## 0.5.3 (August 8, 2024)
+
+#### IMPROVEMENTS / NEW FEATURES:
+* Ignore changes to placement
+
 ## 0.5.2 (August 7, 2024)
+
+#### IMPROVEMENTS / NEW FEATURES:
 * Ignore changes to instance market options
+
+## 0.5.1 (July 29, 2024)
+
+#### IMPROVEMENTS / NEW FEATURES:
+* Replace deprecated tags attribute
 
 ## 0.5.0 (July 29, 2024)
 
