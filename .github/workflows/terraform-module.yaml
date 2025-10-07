@@ -1,0 +1,14 @@
+---
+name: Terraform Module
+on:
+  push: {}
+  workflow_dispatch: {}
+
+jobs:
+  publish-module:
+    uses: taskrabbit/github_workflows/.github/workflows/terraform-module.yaml@main
+    with:
+      namespace: taskrabbit
+      system: aws
+      name: "asg" # This is required to be updated by the downstream repository.
+      module_directory: ./group
