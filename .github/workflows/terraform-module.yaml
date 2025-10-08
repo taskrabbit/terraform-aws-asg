@@ -6,7 +6,7 @@ on:
 
 jobs:
   publish-module:
-    uses: taskrabbit/github_workflows/.github/workflows/terraform-module.yaml@main
+    uses: taskrabbit/github_workflows/.github/workflows/terraform-module.yaml@dj/debug-artifactory-tr
     with:
       namespace: taskrabbit
       system: aws
