@@ -12,3 +12,4 @@ jobs:
       system: aws
       name: "asg" # This is required to be updated by the downstream repository.
       module_directory: ./group
+      example_directory: ./examples/basic
