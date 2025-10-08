@@ -11,4 +11,4 @@ jobs:
       namespace: taskrabbit
       system: aws
       name: "asg" # This is required to be updated by the downstream repository.
-      module_directory: ./group
+      module_directory: group
